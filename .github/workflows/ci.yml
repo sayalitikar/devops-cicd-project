@@ -25,6 +25,14 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t devops-cicd-app .
+              - name: Scan Docker image
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: devops-cicd-app
+          format: table
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: CRITICAL,HIGH
 
       - name: Run Docker container
         run: docker run devops-cicd-app
