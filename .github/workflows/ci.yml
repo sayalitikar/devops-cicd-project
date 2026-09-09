@@ -24,4 +24,7 @@ jobs:
         run: npm test
 
       - name: Build Docker image
-        run: docker build -t devops-cicd-app .
+        run: docker build -t devops-cicd-app 
+
+      - name: Run Docker container
+        run: docker run devops-cicd-app
